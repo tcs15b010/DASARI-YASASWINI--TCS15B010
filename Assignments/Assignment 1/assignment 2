@@ -1,0 +1,34 @@
+LANGUAGE : OCAML
+PROGRAMMING TASKS SOLVED :
+
+1.EXPONENTIATION
+
+CODE:
+
+# 5. ** 2. **3. ;;
+# 5. ** (2. ** 3.);;
+#(5. ** 2.)**3. ;;
+
+OUTPUT
+
+- :  float = 15625.
+- :  float = 390625.
+- :  float = 15625.
+
+
+2.COMPARING INTEGERS
+
+CODE
+
+#let max a b =
+if a!= b then
+if a>b then Printf.printf  "%d is greater than %d"   a b      else  Printf.printf  "%d is less than %d"  a b
+else 
+print_string "numbers are equal" ;;
+
+OUTPUT
+
+# max 4 4 ;;
+numbers are equal
+# max 4 5 ;;
+4 is less than 5
