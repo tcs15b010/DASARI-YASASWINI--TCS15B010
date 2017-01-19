@@ -1,0 +1,22 @@
+continuation of assignment 2 
+
+CATALANS NUMBER UPTO 9 
+
+CODE:
+
+let catalan : int ref = ref 0 in
+Printf.printf "%d ," 1 ;
+for i = 2 to 15 do
+let nm : int ref = ref 1 in
+let den : int ref = ref 1 in
+for k = 2 to i do
+nm := (!nm)*(i+k);
+den := (!den)*k;
+catalan := (!nm)/(!den) ;
+done;
+print_int (!catalan); print_string "," ;
+done;;
+
+
+OUTPUT:
+1 ,2,5,14,42,132,429,1430,4862
