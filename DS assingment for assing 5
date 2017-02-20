@@ -1,0 +1,148 @@
+DSA assingment
+
+STACK::
+
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+struct stack
+{
+	char a[1000];
+	int top;
+};
+typedef struct stack stack;
+stack s;
+void push(char t)
+{
+	(s.top)++;
+	s.a[s.top]=t;
+}
+void pop()
+{
+	if(s.top==-1)
+	{
+		printf("NOT well formed");
+		exit(0);
+	}
+	else
+	{
+		s.top--;
+	}
+}
+int main()
+{
+	int len,i;
+	char d[1000];
+	s.top=-1;	
+	printf("Enter a sequence:");
+	scanf("%s",d);
+	len=strlen(d);
+	for(i=0;i<len;i++)
+	{
+		if(d[i]=='[')
+		{
+			push('[');
+		}
+		else
+		{
+			pop();
+		}
+	}
+	if(s.top==-1)
+	{
+		printf("The string of parenthesis is well formed");
+	}
+	else
+	{
+		printf("NOT well formed");
+	}
+}
+
+
+
+
+  QUEUE::
+  
+  #include<stdio.h>
+#include<conio.h>
+
+struct node 
+{
+	int data;
+	struct node* next;
+}  *front = NULL, *rear = NULL ;
+
+void insert(int);
+void deletion();
+void display();
+
+int main()
+{
+	int choice,value;
+	clrscr();
+	while(1)
+	{
+	
+	printf("select the operation");
+	printf("1.insertion\n 2.deletion\n 3.display\n");
+	printf("enter choice");
+	scanf("%d", &choice);
+	switch(choice)
+	{	case 1 : printf("enter element to be inserted ");
+			 scanf("%d" ,&value);
+			 insert(value);
+			 break;
+	case 2 : deletion();
+			 break;
+	case 3 : display();
+			 break;
+	case 4 : exit(0);
+	}
+ }
+
+}
+void insert(int value)
+	{
+	
+	 struct Node *newNode;
+   newNode = (struct Node*)malloc(sizeof(struct Node));
+   newNode->data = value;
+   newNode -> next = NULL;
+   if(front == NULL)
+      front = rear = newNode;
+   else{
+      rear -> next = newNode;
+      rear = newNode;
+   }
+   printf("\nInsertion is Success!!!\n");
+}		
+void deletion()
+{
+	 if(front == NULL)
+      printf("\nQueue is Empty\n");
+   else{
+      struct Node *temp = front;
+      front = front -> next;
+      printf("\nDeleted element: %d\n", temp->data);
+      free(temp);
+   }
+}
+void display()
+{
+	if(front == NULL)
+      printf("\nQueue is Empty!!!\n");
+   else{
+      struct Node *temp = front;
+      while(temp->next != NULL){
+	 printf("%d--->",temp->data);
+	 temp = temp -> next;
+      }
+      printf("%d--->NULL\n",temp->data);
+   }
+}    
+    
+	
+	
+  
+
