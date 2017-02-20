@@ -1,0 +1,77 @@
+Assingment 5 is implementing Stacks and Queues in OCaml:
+
+Stacks in OCaml are pretty well handeled by using lists and objects
+
+STACK::
+
+# let stack init = object
+    val mutable v = init
+
+    method pop =
+      match v with
+      | hd :: tl -> 
+        v <- tl;
+        Some hd
+      | [] -> None
+
+    method push hd = 
+      v <- hd :: v
+  end ;;
+  
+  
+  OUTPUT::
+  
+  # let s = stack [3; 2; 1] ;;
+ # s#pop ;;
+- : int option = Some 3
+# s#push 5;;
+# s#push 2;;
+ # s#pop ;;
+- : int option = Some 2  
+  
+SO,FIRST IN LAST OUT::
+
+
+QUEUES IN OCAML
+
+OCaml has inbuilt libraries for queues using lists:
+
+# let myq = Queue.create ();;
+# Queue.add 4 myq;;
+# Queue.add 34 myq;;
+# Queue.add 8 myq;;
+# Queue.add 1  myq;;
+
+# Queue.take myq;;          (* Queue.take and  Queue.peek both of them removes the tail element.inbuilt functions  *)
+- : int = 4
+# Queue.take myq;;
+- : int = 34
+# Queue.add 4 myq;;
+# Queue.peek myq;;
+- : int = 8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
