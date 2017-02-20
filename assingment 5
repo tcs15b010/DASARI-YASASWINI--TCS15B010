@@ -49,29 +49,3 @@ OCaml has inbuilt libraries for queues using lists:
 # Queue.add 4 myq;;
 # Queue.peek myq;;
 - : int = 8
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
