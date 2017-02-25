@@ -1,0 +1,48 @@
+this interpreter is not yet done.still working on it!!
+
+
+
+
+type exp = 
+    IntExp of int
+  | Builtin of (exp -> env -> exp)
+  | VarExp of string
+  | FunExp of string * exp
+  | LetExp of string * exp * exp
+  | IfExp of exp * exp * exp
+  | AppExp of exp * exp
+and
+  env = (string * exp) list
+
+type token = 
+    LParen 
+  | RParen 
+  | Id of string 
+  | Int of int
+  | Bool of bool
+  |
+
+let rec getId cacc tacc =
+  let next = input_char stdin in
+  match next with
+    'a'..'z' | 'A'..'Z' | '0'..'9' -> getId (cacc ^ (Char.escaped next)) tacc
+  | _ -> dispatch next ((Id cacc) :: tacc)
+and getInt iacc tacc =
+  let next = input_char stdin in
+  match next with
+    '0'..'9' -> getInt (iacc * 10 + (Char.code next) - 48) tacc
+  | _ -> dispatch next ((Int iacc) :: tacc)
+and dispatch next tacc =
+  match next with
+    'a'..'z' | 'A'..'Z' | '+' -> getId (Char.escaped next) tacc
+  | '0'..'9' -> getInt ((Char.code next) - 48) tacc
+  | '(' -> dispatch (input_char stdin) (LParen :: tacc)
+  | ')' -> dispatch (input_char stdin) (RParen :: tacc)
+  | ' ' | '\t' -> dispatch (input_char stdin) tacc
+  | '\n' -> List.rev tacc
+  | _ -> dispatch (input_char stdin) tacc
+and tokenize () =
+  dispatch (input_char stdin) [];;
+
+
+ 
